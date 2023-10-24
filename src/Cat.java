@@ -1,3 +1,19 @@
+public class Cats extends Participant {
+
+    Cat(String name, int maxRunDistance, int maxJumpHeight) {
+        super(name, maxRunDistance, maxJumpHeight);
+    }
+    @Override
+    void run() {
+        System.out.println("Кіт " + this.getName() + " біжить");
+    }
+
+    @Override
+    void jump() {
+        System.out.println("Кіт " + this.getName() + " стрибає");
+    }
+}
+
 public class Cat extends Animal {
     private static int totalCats = 0;
     public Cat(String name) {
