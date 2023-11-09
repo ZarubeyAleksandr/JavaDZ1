@@ -34,9 +34,24 @@ public class Product {
     }
 
 
+    public static List<Product> filterProducts(List<Product> products) {
+        return products.stream()
+                .filter(product -> product.getType().equals("Book") && product.getPrice() > 250)
+                .collect(Collectors.toList());
+    }
+
+
     // ********* Функція застосування знижки **************
     public void applyDiscount() {
         if (discount) this.price *= 0.9;
+    }
+
+    public static List<Product> filterBooksWithDiscount(List<Product> products) {
+        return products.stream()
+                .filter(product -> product.getType().equals("Book") && product.isDiscount())
+                .peek(Product::applyDiscount)
+                .collect(Collectors.toList());
+
     }
 
     //**********  Функція пошуку нижчої ціни в категорії *****
@@ -59,9 +74,8 @@ public class Product {
 
 
     public static double totalCost(List<Product> products) {
-        LocalDate currentDate = LocalDate.now();
         return products.stream()
-                .filter(product -> product.getAddDate().getYear() == currentDate.getYear())
+                .filter(product -> product.getAddDate().getYear() == LocalDate.now().getYear())
                 .filter(product -> product.getType().equals("Book"))
                 .filter(product -> product.getPrice() <= 75)
                 .mapToDouble(Product::getPrice)
@@ -83,16 +97,13 @@ public class Product {
                 new Product("Book", 70, false, LocalDate.of(2023, 6, 1))
         );
 
-        products.stream()
-                .filter(product -> product.getType().equals("Book") && product.getPrice() > 250)
-                .forEach(product -> System.out.println("Тип: " + product.getType() + ", Ціна: " + product.getPrice()));
-                
+        List<Product> filteredProducts = filterProducts(products);
+        filteredProducts.forEach(product -> System.out.println("Тип: " + product.getType() + ", Ціна: " + product.getPrice()));
+
         System.out.println("Товари зі знижкою 10%");
 
-        products.stream()
-                .filter(product -> product.getType().equals("Book") && product.isDiscount())
-                .peek(Product::applyDiscount)
-                .forEach(product -> System.out.println("Тип: " + product.getType() + ", Ціна: " + product.getPrice()));
+        List<Product> discountedBooks = filterBooksWithDiscount(products);
+        discountedBooks.forEach(product -> System.out.println("Тип: " + product.getType() + ", Ціна: " + product.getPrice()));
 
 
         System.out.println("Найдешевша книга");
