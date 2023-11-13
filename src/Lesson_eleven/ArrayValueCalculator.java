@@ -2,13 +2,13 @@ package Lesson_eleven;
 
 public class ArrayValueCalculator {
 
-    public static int doCalc(String[][] array) throws ArraySizeException, ArrayDataException {
+    public static int doCalc(String[][] arrNumbers) throws ArraySizeException, ArrayDataException {
 
-        if (array.length != 4) {
+        if (arrNumbers.length != 4) {
             throw new ArraySizeException("Розмір масиву має бути 4x4");
         }
 
-        for (String[] row : array) {
+        for (String[] row : arrNumbers) {
             if (row.length != 4) {
                 throw new ArraySizeException("Розмір масиву має бути 4x4");
             }
@@ -16,10 +16,10 @@ public class ArrayValueCalculator {
 
         int sum = 0;
 
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
+        for (int i = 0; i < arrNumbers.length; i++) {
+            for (int j = 0; j < arrNumbers[i].length; j++) {
                 try {
-                    sum += Integer.parseInt(array[i][j]);
+                    sum += Integer.parseInt(arrNumbers[i][j]);
                 } catch (NumberFormatException e) {
                     throw new ArrayDataException("Невірні дані у комірці: [" + i + "][" + j + "]", e);
                 }
