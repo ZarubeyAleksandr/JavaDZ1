@@ -1,7 +1,6 @@
 package Lesson_eight;
 
 public class Palindrome {
-
     public static boolean isPalindrome(String s) {
         if (s.isEmpty()) {
             return true;
@@ -20,6 +19,7 @@ public class Palindrome {
             } else {
                 if (Character.toLowerCase(leftChar) !=
                         Character.toLowerCase(rightChar)) {
+                if (Character.toLowerCase(leftChar) != Character.toLowerCase(rightChar)) {
                     return false;
                 }
                 left++;
