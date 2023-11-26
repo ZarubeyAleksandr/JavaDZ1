@@ -40,6 +40,8 @@ public class Product {
                 .collect(Collectors.toList());
     }
 
+
+    // ********* Функція застосування знижки **************
     public void applyDiscount() {
         if (discount) this.price *= 0.9;
     }
@@ -52,6 +54,7 @@ public class Product {
 
     }
 
+    //**********  Функція пошуку нижчої ціни в категорії *****
     public static void findCheapestProduct(List<Product> products, String category) {
         products.stream()
                 .filter(product -> product.getType().equals(category))
