@@ -1,5 +1,7 @@
 package Lesson_eight;
 
+import static java.lang.Character.*;
+
 public class Palindrome {
     public static boolean isPalindrome(String s) {
         if (s.isEmpty()) {
@@ -12,12 +14,13 @@ public class Palindrome {
             char leftChar = s.charAt(left);
             char rightChar = s.charAt(right);
 
-            if (!Character.isLetterOrDigit(leftChar)) {
+            if (!isLetterOrDigit(leftChar)) {
                 left++;
-            } else if (!Character.isLetterOrDigit(rightChar)) {
+            } else if (!isLetterOrDigit(rightChar)) {
                 right--;
             } else {
-                if (Character.toLowerCase(leftChar) != Character.toLowerCase(rightChar)) {
+                if (toLowerCase(leftChar) !=
+                        toLowerCase(rightChar)) {
                     return false;
                 }
                 left++;
