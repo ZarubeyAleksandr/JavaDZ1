@@ -15,7 +15,7 @@ public class AnalyzerText {
                 textBook.append(line).append(" ");
             }
         } catch (IOException e) {
-            System.out.println("Помилка читання книги " + fileBook);
+            System.out.println("Помилка читання тексту " + fileBook);
         }
         return textBook.toString();
     }
