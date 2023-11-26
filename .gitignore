@@ -1,6 +1,7 @@
 ### DZ1 ignore ###
 .idea
 .git
+.txt
 
 ### IntelliJ IDEA ###
 out/
