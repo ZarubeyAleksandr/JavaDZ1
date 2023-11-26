@@ -58,6 +58,7 @@ public class ArrayValueCalculator {
             System.out.println("Результат: " + result);
         } catch (ArraySizeException e) {
             System.err.println("Помилка розміру масиву: " + e.getMessage());
+
             System.err.println(e.getMessage());
         } catch (ArrayDataException e) {
             System.err.println(e.getMessage());
