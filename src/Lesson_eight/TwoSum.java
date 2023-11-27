@@ -5,6 +5,16 @@ import java.util.HashMap;
 
 public class TwoSum {
     public static int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> myMap = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (myMap.containsKey(target - nums[i])) {
+                return new int[]{i, myMap.get(target - nums[i])};
+            } else {
+                myMap.put(nums[i], i);
+            }
+        }
+        return new int[]{0, 0};
+    public static int[] twoSum(int[] nums, int target) {
         HashMap<Integer,Integer> myMap=new HashMap<>();
         for(int i=0; i<nums.length; i++){
             if(myMap.containsKey(target-nums[i])){
@@ -33,5 +43,4 @@ public class TwoSum {
         int[] result3 = twoSum(nums3, target3);
         System.out.println(Arrays.toString(result3));
     }
-
 }
